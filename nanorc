@@ -1,1 +1,109 @@
 set nowrap
+
+## The characters treated as closing brackets when justifying
+## paragraphs.  They cannot contain blank characters.  Only closing
+## punctuation, optionally followed by closing brackets, can end
+## sentences.
+##
+set brackets ""')>]}""'
+
+## The opening and closing brackets that can be found by bracket
+## searches.  They cannot contain blank characters.  The former set must
+## come before the latter set, and both must be in the same order.
+##
+set matchbrackets "(<[{)>]}""])"
+
+## Enable mouse support, if available for your system.  When enabled,
+## mouse clicks can be used to place the cursor, set the mark (with a
+## double click), and execute shortcuts.  The mouse will work in the X
+## Window System, and on the console when gpm is running.
+##
+set mouse
+
+## Do extended regular expression searches by default.
+set regexp
+
+## Allow nano to be suspended.
+set suspend
+
+## Use this tab size instead of the default; it must be greater than 0.
+set tabsize 2
+
+## syntax highlighting in xorg.conf
+##
+syntax "xorg" "xorg\.conf$"
+color brightwhite "(Section|EndSection|Sub[sS]ection|EndSub[sS]ection)"
+# keywords
+color yellow "[^A-Za-z0-9](Identifier|Screen|InputDevice|Option|RightOf|LeftOf|Driver|RgbPath|FontPath|ModulePath|Load|VendorName|ModelName|BoardName|BusID|Device|Monitor|DefaultDepth|View[pP]ort|Depth|Virtual|Modes|Mode|DefaultColorDepth|Modeline|\+vsync|\+hsync|HorizSync|VertRefresh)[^A-Za-z0-9]"
+# numbers
+color magenta "[0-9]"
+# strings
+color green ""(\\.|[^\"])*""
+# comments
+color blue "#.*"
+
+
+##############################################################################
+#
+# Syntax highlighting for XML files
+#
+# Author:  Josef 'Jupp' Schugt, jupp(a)rubyforge.org
+# License: GPL 2  or later
+#
+# Version: 2004-02-25
+#
+##############################################################################
+
+syntax "ml" ".*\.([jrs]?html?|xml|sgml?)$"
+color white "^.+$"
+color green  start="<" end=">"
+color cyan   "<[^> ]+"
+color cyan   ">"
+color yellow start="<!DOCTYPE" end="[/]?>"
+color yellow start="<!--" end="-->"
+color red    "&[^;]*;"
+
+
+
+##############################################################################
+#
+# Syntax highlighting for HTTP codes
+#
+# Author:  Josef 'Jupp' Schugt, jupp(a)rubyforge.org
+# License: GPL 2  or later
+#
+# Version: 2004-02-25
+#
+##############################################################################
+
+syntax "urls"
+color brightmagenta   "^.*$"
+color cyan      "^(1[0-9][0-9]|20[256]|30[45]).*$"
+color green      "^20[03].*$"
+color brightyellow   "^(201|30[0-37]).*$"
+color brightred      "^(204|[45][0-9][0-9]|666).*$"
+
+
+
+
+##############################################################################
+#
+# Syntax highlighting for CSS files
+#  
+# Author:  Simon Rupf, simon.rupf(a)int-ag.ch
+# License: GPL 2  or later
+#
+# Version: 2005-02-14
+#
+##############################################################################
+
+syntax "css" "\.css$"
+color brightred     "."
+color brightyellow  start="\{" end="\}"
+color brightwhite           start=":" end="[;^\{]"
+color brightblue    ":active|:focus|:hover|:link|:visited|:link|:after|:before|$"
+color brightblue    start="\/\*" end="\\*/"
+color green         ";|:|\{|\}""}]"
+
+## Ruby highlighting
+include "~/dotfiles/boku_no_pico/ruby.nanorc"
